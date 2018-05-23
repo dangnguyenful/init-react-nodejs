@@ -3,16 +3,17 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "client": "cd client && yarn start",
-    "server": "nodemon server/index.js",
+    "install-server": "cd server && npm install",
+    "install-client": "cd client && npm install",
+    "install": "concurrently --kill-others-on-fail \"yarn install-server\" \"yarn install-client\"",
+    "server": "cd server && nodemon index.js",
+    "build": "cd client && npm run build",
+    "client": "cd client && npm start",
     "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
-  },
-  "dependencies": {
-    "express": "^4.16.2"
   },
   "devDependencies": {
     "concurrently": "^3.5.0",
-    "nodemon": "^1.17.4",
-    "yarn": "^1.6.0"
+    "yarn": "^1.6.0",
+    "nodemon": "^1.17.5"
   }
 }
